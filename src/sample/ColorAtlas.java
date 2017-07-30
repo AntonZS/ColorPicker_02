@@ -21,16 +21,29 @@ public class ColorAtlas {
     }
 
     public UColor getColor(String name) {
-        //добавить проверку соответствия name
-        return atlas.get(namesOfColor.indexOf(name));
+        // проверка соответствия name
+
+        try {
+            UColor color = atlas.get(namesOfColor.indexOf(name));
+            if(color.getName()==name){
+                return color;
+            }
+            else return null;
+        }catch(Exception e){
+
+        }
+        return null;
     }
 
     public UColor giveNearColor(UColor color) {
-        double[] dE76 = new double[quant];
+        ArrayList<Double> dE76 = new ArrayList<>(quant);
+        double minDE76 = 100.0;
         for (int x = 0; x < atlas.size(); x++) {
-            dE76[x] = color.dE76(atlas.get(x));
+            double de76 = color.dE76(atlas.get(x));
+            dE76.add(de76);
+            if(de76 < minDE76) minDE76 = de76;
         }
-        double minDE76 = dE76[0];
-        return null;
+
+        return atlas.get(dE76.indexOf(minDE76));
     }
 }

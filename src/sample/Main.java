@@ -14,6 +14,13 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+
+        UColor c = new UColor("34-45-123",34.23,34.3,123.2);
+        ColorAtlas atlasZambatti = new ColorAtlas();
+        atlasZambatti.addColor(c);
+
+
+
     }
 
 

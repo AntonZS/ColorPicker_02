@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by anton on 30.07.2017.
  */
 public class ColorAtlas {
-    int quant;
+
     private ArrayList<UColor> atlas = new ArrayList<>();
     private ArrayList<String> namesOfColor = new ArrayList<>();
 
@@ -14,15 +14,14 @@ public class ColorAtlas {
         if (namesOfColor.contains(color.getName())) {
             return "has been added early";
         }
-        atlas.add(quant, color);
-        namesOfColor.add(quant, color.getName());
-        quant++;
+        atlas.add( color);
+        namesOfColor.add( color.getName());
+
         return "success";
     }
 
     public UColor getColor(String name) {
         // проверка соответствия name
-
         try {
             UColor color = atlas.get(namesOfColor.indexOf(name));
             if(color.getName()==name){
@@ -36,7 +35,7 @@ public class ColorAtlas {
     }
 
     public UColor giveNearColor(UColor color) {
-        ArrayList<Double> dE76 = new ArrayList<>(quant);
+        ArrayList<Double> dE76 = new ArrayList<>(atlas.size());
         double minDE76 = 100.0;
         for (int x = 0; x < atlas.size(); x++) {
             double de76 = color.dE76(atlas.get(x));
